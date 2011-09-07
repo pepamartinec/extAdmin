@@ -8,7 +8,7 @@ extAdmin.localization( 'cs',
 		}
 	},
 	
-	'extAdmin.component.dataList.feature.actions.ActionsColumn' : {
+	'extAdmin.component.dataBrowser.dataList.feature.actions.ActionsColumn' : {
 		header : 'Akce'
 	}
 } );
