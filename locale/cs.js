@@ -1,6 +1,6 @@
 extAdmin.localization( 'cs',
 {	
-	'extAdmin.widget.form.plugin.Localizable' : {
+	'extAdmin.component.form.plugin.Localizable' : {
 		langs : {
 			cs : 'Česky',
 			en : 'Anglicky',
