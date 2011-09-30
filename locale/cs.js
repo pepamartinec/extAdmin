@@ -15,8 +15,11 @@ extAdmin.localization( 'cs',
 
 Ext.localization( 'cs',
 {
-	'Ext.form.field.Number' : {
-		decimalSeparator : ','
+	'Ext.util.Format' : {
+		decimalSeparator  : ',',
+		thousandSeparator : ' ',
+		currencyPrecision : 2,
+		currencyAtEnd     : true
 	},
 	
 	'Ext.form.field.Date' : {
