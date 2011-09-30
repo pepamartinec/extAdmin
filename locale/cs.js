@@ -15,6 +15,10 @@ extAdmin.localization( 'cs',
 
 Ext.localization( 'cs',
 {
+	'Ext.Date' : {
+		defaultFormat : 'j.n.Y G:i'
+	},
+	
 	'Ext.util.Format' : {
 		decimalSeparator  : ',',
 		thousandSeparator : ' ',

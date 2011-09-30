@@ -27,10 +27,13 @@ Ext.apply( extAdmin,
 	 */
 	localizations : [ 'cs' ],
 	
-	defaultCurrency : {
-		code   : 'CZK',
-		symbol : 'Kč'
+	currencies : {
+		CZK : { symbol : '\u004b\u010d' },
+		EUR : { symbol : '\u20ac' },
+		USD : { symbol : '\u0024' }
 	},
+	
+	defaultCurrency : 'CZK',
 	
 	/**
 	 * Interface language
@@ -80,26 +83,38 @@ Ext.apply( extAdmin,
 		// add space between value and currency symbol
 		var UtilFormat = Ext.util.Format;
 		UtilFormat.currency = function(v, currencySign, decimals, end) {
-            var negativeSign = '',
-                format = ",0",
-                i = 0;
-            v = v - 0;
-            if (v < 0) {
-                v = -v;
-                negativeSign = '- ';
-            }
-            decimals = decimals || UtilFormat.currencyPrecision;
-            format += format + (decimals > 0 ? '.' : '');
-            for (; i < decimals; i++) {
-                format += '0';
-            }
-            v = UtilFormat.number(v, format);
-            if ((end || UtilFormat.currencyAtEnd) === true) {
-                return Ext.String.format("{0}{1} {2}", negativeSign, v, currencySign || UtilFormat.currencySign);
-            } else {
-                return Ext.String.format("{0}{1} {2}", negativeSign, currencySign || UtilFormat.currencySign, v);
-            }
-        },
+			var negativeSign = '',
+			    format = ",0",
+			    i = 0;
+			    v = v - 0;
+			if (v < 0) {
+				v = -v;
+				negativeSign = '- ';
+			}
+			decimals = decimals || UtilFormat.currencyPrecision;
+			format += format + (decimals > 0 ? '.' : '');
+			for (; i < decimals; i++) {
+				format += '0';
+			}
+			v = UtilFormat.number(v, format);
+			if ((end || UtilFormat.currencyAtEnd) === true) {
+				return Ext.String.format("{0}{1} {2}", negativeSign, v, currencySign || UtilFormat.currencySign);
+			} else {
+				return Ext.String.format("{0}{1} {2}", negativeSign, currencySign || UtilFormat.currencySign, v);
+			}
+		};
+
+		// make DateColumn use locale-aware defaul date format
+		Ext.grid.column.Date.override({
+			constructor : function( cfg ) {
+			
+				Ext.applyIf( cfg, {
+					format : Ext.Date.defaultFormat
+				});
+				
+				this.callOverridden( arguments );
+			}
+		});
 		
 		// setup error handling
 		extAdmin.ErrorHandler.setDebug( this.debug );
