@@ -157,5 +157,31 @@ Ext.apply( extAdmin,
 				}
 			}
 		});
+	},
+	
+	applyConfig : function( object, config )
+	{
+		if( object && config ) {
+			for( var property in config ) {
+				if( config[property] !== undefined ) {
+					object[property] = config[property];
+				}
+			}
+		}
+
+        return object;
+	},
+	
+	applyConfigIf : function( object, config )
+	{
+		if( object && config ) {
+			for( var property in config ) {
+				if( object[property] === undefined && config[property] !== undefined ) {
+					object[property] = config[property];
+				}
+			}
+		}
+
+        return object;
 	}
 });
