@@ -183,5 +183,13 @@ Ext.apply( extAdmin,
 		}
 
         return object;
-	}
+	},
+	
+    abstractFn : function()
+    {
+    	Ext.Error.raise({
+    		msg: 'Not implemented abstract method called',
+    		'this' : this
+    	});
+    }
 });
