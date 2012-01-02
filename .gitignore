@@ -1,0 +1,8 @@
+##### ECLIPSE PROJECT FILES #####
+/.buildpath
+/.project
+/.settings
+
+*.bak
+/tmp
+/trash

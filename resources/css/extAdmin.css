@@ -32,3 +32,8 @@
 	font-weight: bold;
 	padding: 2px 5px;
 }
+
+/******* MODULES PANEL *******/
+.x-modules-list { background-color: #fff; text-align: center; }
+.x-modules-list .module { height: 64px; margin: 10px; padding: 5px; border: 1px solid transparent; border-radius: 5px; }
+.x-modules-list .module:hover { background-color: #dfe8f6; border: 1px solid #abf; }

@@ -1,11 +1,33 @@
 Ext.namespace( 'extAdmin' );
-
-Ext.require([
-	'extAdmin.App',
-	'extAdmin.ModuleManager',
-	'extAdmin.AuthManager',
-	'extAdmin.ErrorHandler'
-]);
+//
+//Ext.require([
+//	// singleton handlers & managers
+//	'extAdmin.ErrorHandler',
+//	
+//	// system components
+//	'extAdmin.component.Viewport',
+//	'extAdmin.component.dataBrowser.DataBrowser',
+//	'extAdmin.component.dataBrowser.dataList.Tree',
+//	'extAdmin.component.dataBrowser.dataList.Grid',
+//	'extAdmin.component.dataBrowser.dataList.TreeGrid',
+//	'extAdmin.component.form.Form',
+//	'extAdmin.component.GalleryBrowser',
+//	
+//	'extAdmin.widget.grid.column.FullTree',
+//	'extAdmin.widget.grid.column.Localizations',
+//	'extAdmin.widget.grid.column.Currency',
+//	
+//	// form widgets
+//	'extAdmin.widget.form.Image',
+//	'extAdmin.widget.form.ForeingRecord',
+//	'extAdmin.widget.form.Position',
+//	'extAdmin.widget.form.Currency',
+//	'extAdmin.widget.form.UrlName',
+//	'extAdmin.widget.form.gridList.GridList',
+//	'extAdmin.widget.form.FilesGridList',
+//	'extAdmin.widget.form.tinyMce.TinyMce',
+//	'extAdmin.widget.form.HorizontalContainer'
+//]);
 
 Ext.apply( extAdmin,
 {
@@ -50,6 +72,34 @@ Ext.apply( extAdmin,
 	init : function( config )
 	{
 		Ext.apply( this, config );
+		
+		this.initTweaks();
+		
+		// setup error handling
+		extAdmin.ErrorHandler.setDebug( this.debug );
+		
+//		extAdmin.AuthManager.init( config.authManager );
+//		extAdmin.AuthManager.refreshCurrentUser();
+	},
+	
+	createEnv : function( config, cb )
+	{
+		var env = Ext.create( 'extAdmin.Environment' );
+		evn.init( config, cb );
+	},
+	
+	launch : function(  )
+	{
+		
+	},
+	
+	initTweaks : function()
+	{
+		// make URL parameters encoding PHP compatible
+		var original = Ext.Object.toQueryString;
+		Ext.Object.toQueryString = function( object ) {
+			return original( object, true );
+		};
 		
 		// init Ext.form.field.Date to accept MySQL date(time) format
 		Ext.form.field.Date.prototype.altFormats   = 'Y-m-d H:i:s|'+ Ext.form.field.Date.prototype.altFormats;
@@ -114,18 +164,7 @@ Ext.apply( extAdmin,
 				
 				this.callOverridden( arguments );
 			}
-		});
-		
-		// setup error handling
-		extAdmin.ErrorHandler.setDebug( this.debug );
-		
-		extAdmin.AuthManager.init( config.authManager );
-		extAdmin.AuthManager.refreshCurrentUser();
-	},
-	
-	launch : function( config )
-	{
-		return Ext.create( 'extAdmin.App', config );
+		});		
 	},
 	
 	localization : function( lang, labels )
@@ -191,5 +230,29 @@ Ext.apply( extAdmin,
     		msg: 'Not implemented abstract method called',
     		'this' : this
     	});
+    },
+    
+    callback : function( cb, args )
+    {
+    	if( cb === null || cb === undefined ) {
+    		return true;
+    	}
+    	
+    	if( Ext.isFunction( cb ) ) {
+    		return cb.apply( null, args );
+    		
+    	}
+    	
+    	if( Ext.isArray( cb ) ) {
+    		if( cb.length == 1 ) {
+    			return cb[0].apply( null, args );
+    			
+    		} else if( cb.length == 2 ) {
+    			return cb[0].apply( cb[1], args );
+    		}
+    	};
+    	
+    	// FIXME supply some cool exception here
+    	Ext.Error.raise('Invalid callback');
     }
 });
