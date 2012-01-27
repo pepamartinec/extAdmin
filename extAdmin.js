@@ -1,10 +1,5 @@
 Ext.namespace( 'extAdmin' );
 
-Ext.require([
-	'extAdmin.action.ActionManager'
-]);
-	
-
 //
 //Ext.require([
 //	// singleton handlers & managers
