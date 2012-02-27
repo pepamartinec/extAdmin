@@ -225,6 +225,23 @@ Ext.apply( extAdmin,
         return object;
 	},
 	
+	applySafe : function( object, config )
+	{
+		if( object && config && typeof config === 'object' ) {
+			for( var property in object ) {
+				if( object.hasOwnProperty( property ) === false ) {
+					continue;
+				}
+				
+				if( config[property] !== undefined ) {
+					object[property] = config[property];
+				}
+			}
+		}
+
+        return object;
+	},
+	
     abstractFn : function()
     {
     	Ext.Error.raise({
