@@ -8,7 +8,7 @@ extAdmin.localization( 'en',
 		}
 	},
 	
-	'extAdmin.component.dataBrowser.dataList.feature.actions.ActionsColumn' : {
+	'extAdmin.component.dataView.actionDock.Column' : {
 		header : 'Actions'
 	}
 } );
