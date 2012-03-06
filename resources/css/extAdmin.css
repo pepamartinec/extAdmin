@@ -45,3 +45,15 @@
 	height     : 20px;
 	background : none center center no-repeat;
 }
+
+.x-grid-row.x-animate, .x-grid-row.x-animate .x-grid-cell {
+	-webkit-transition: background-color 2s ease;
+}
+
+.x-grid-row.x-added, .x-grid-row.x-added .x-grid-cell {
+	background-color : #43718F;
+}
+
+.x-grid-row.x-read, .x-grid-row.x-read .x-grid-cell {
+	background-color : #B0D25D;
+}

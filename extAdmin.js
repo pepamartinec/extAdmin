@@ -97,10 +97,10 @@ Ext.apply( extAdmin,
 	initTweaks : function()
 	{
 		// make URL parameters encoding PHP compatible
-		var original = Ext.Object.toQueryString;
-		Ext.Object.toQueryString = function( object ) {
-			return original( object, true );
-		};
+//		var original = Ext.Object.toQueryString;
+//		Ext.Object.toQueryString = function( object ) {
+//			return original( object, true );
+//		};
 		
 		// init Ext.form.field.Date to accept MySQL date(time) format
 		Ext.form.field.Date.prototype.altFormats   = 'Y-m-d H:i:s|'+ Ext.form.field.Date.prototype.altFormats;
