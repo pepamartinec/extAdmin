@@ -80,7 +80,7 @@ class DataBrowserResponse extends DataStoreResponse
 		$view = $module->getViewConfiguration();
 		$actionsProperty = $this->determineActionsProperty( $view['fields'] );
 
-		foreach( $this->records as $k => $record ) {
+		foreach( $this->records as $record ) {
 			// extract data
 			if( $this->extractor !== null ) {
 				$recordData = call_user_func( $this->extractor, $record );
@@ -102,7 +102,7 @@ class DataBrowserResponse extends DataStoreResponse
 			$recordData[ $actionsProperty ] = $recordActions;
 
 
-			$data[ $k ] = $recordData;
+			$data[] = $recordData;
 		}
 
 		$this->set( self::KEY_DATA, $data );

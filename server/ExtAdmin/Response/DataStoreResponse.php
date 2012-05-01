@@ -56,7 +56,7 @@ class DataStoreResponse extends ActionResponse
 	{
 		$data = array();
 
-		foreach( $this->records as $k => $record ) {
+		foreach( $this->records as $record ) {
 			// extract data
 			if( $this->extractor !== null ) {
 				$recordData = call_user_func( $this->extractor, $record );
@@ -66,7 +66,7 @@ class DataStoreResponse extends ActionResponse
 
 			// TODO check $recordData is array
 
-			$data[ $k ] = $recordData;
+			$data[] = $recordData;
 		}
 
 		$this->set( self::KEY_DATA, $data );
