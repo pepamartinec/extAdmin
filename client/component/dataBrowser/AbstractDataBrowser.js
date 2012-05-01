@@ -81,7 +81,6 @@ Ext.define( 'extAdmin.component.dataBrowser.AbstractDataBrowser',
 
 	    items.push( me.dataPanel );
 
-
 		// init filters panel
 		if( config.filters ) {
 			var filtersConfig = config.filters;
@@ -90,8 +89,8 @@ Ext.define( 'extAdmin.component.dataBrowser.AbstractDataBrowser',
 				region      : 'east',
 				split       : true,
 				collapsible : true,
-				collapsed   : filtersConfig.collapsed,
-				width       : filtersConfig.width,
+				collapsed   : filtersConfig.collapsed || false,
+				width       : filtersConfig.width || 300,
 
 				items       : filtersConfig.items,
 

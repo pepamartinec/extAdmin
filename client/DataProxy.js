@@ -75,6 +75,23 @@ Ext.define( 'extAdmin.DataProxy',
         return encoded;
     },
 
+    /**
+     * Encodes the array of {@link Ext.util.Sorter} objects
+     *
+     * @param {Ext.util.Sorter[]} sorters The array of {@link Ext.util.Sorter Sorter} objects
+     * @return {String} The encoded sorters
+     */
+    encodeSorters : function( sorters )
+    {
+        var encoded = {};
+
+        for( var i = 0, sl = sorters.length; i < sl; ++i ) {
+            encoded[ sorters[i].property ] = sorters[i].direction;
+        }
+
+        return encoded;
+    },
+
 	/**
 	 * Runs operation
 	 *
