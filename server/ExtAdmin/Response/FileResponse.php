@@ -42,7 +42,8 @@ class FileResponse extends AbstractResponse
 	 */
 	protected function buildContent( ModuleInterface $module )
 	{
-		$filename = PATH_TO_WEBSERVER_ROOT . PATH_FROM_ROOT_TO_BASE . $this->filename;
+//		$filename = PATH_TO_WEBSERVER_ROOT . PATH_FROM_ROOT_TO_BASE . $this->filename;
+		$filename = $this->filename;
 
 		// invalid file
 		if( ! is_file( $filename ) ) {
