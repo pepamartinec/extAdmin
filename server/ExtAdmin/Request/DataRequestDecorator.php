@@ -72,9 +72,21 @@ class DataRequestDecorator extends RequestDecorator
 	}
 
 	/**
+	 * Checks whether the filter has any value set
+	 *
+	 * @param string $name
+	 * @return boolean
+	 */
+	public function hasFilter( $name, $type = 'string' )
+	{
+		return isset( $this->filters[ $name ] ) && $this->filters[ $name ] !== '';
+	}
+
+	/**
 	 * Returns filter value
 	 *
 	 * @param string $name
+	 * @param string $type
 	 * @return mixed
 	 */
 	public function getFilter( $name, $type = 'string' )
