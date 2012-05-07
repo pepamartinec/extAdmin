@@ -102,6 +102,11 @@ Ext.define( 'extAdmin.component.dataBrowser.DataViewFeature',
 
 		for( var dataIdx in fields ) {
 			field  = fields[ dataIdx ];
+
+			if( field.display !== undefined && field.display != true ) {
+				continue;
+			}
+
 			column = {
 				dataIndex : dataIdx
 			};
