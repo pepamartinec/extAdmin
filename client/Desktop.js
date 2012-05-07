@@ -54,14 +54,14 @@ Ext.define( 'extAdmin.Desktop',
 			componentCls : 'x-modules-list',
 			itemCls      : 'module',
 			itemTpl      : [
-				'{name}'
+				'<span class="x-icon {iconCls}"></span>{name}'
 			],
 
 			store : me.env.createStore({
 				loadAction : [ '\\ExtAdmin\\Module\\SystemModule', 'getMenuItems' ],
 
 				autoLoad : true,
-				fields   : [ 'name', 'entryModule' ]
+				fields   : [ 'name', 'iconCls', 'entryModule' ]
 			}),
 
 			listeners    : {

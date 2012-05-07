@@ -34,9 +34,33 @@
 }
 
 /******* MODULES PANEL *******/
-.x-modules-list { background-color: #fff; text-align: center; }
-.x-modules-list .module { height: 64px; margin: 10px; padding: 5px; border: 1px solid transparent; border-radius: 5px; }
-.x-modules-list .module:hover { background-color: #dfe8f6; border: 1px solid #abf; }
+.x-modules-list {
+	background-color: #fff;
+	text-align: center;
+}
+
+.x-modules-list .module {
+	width : 100px;
+	margin: 10px auto 30px auto;
+	padding: 10px;
+	border: 1px solid transparent;
+	border-radius: 5px;
+}
+
+.x-modules-list .module .x-icon {
+	background-repeat: no-repeat;
+	background-position: top center;
+	width      : 48px;
+	height     : 48px;
+	display    : block;
+	margin     : 0px auto;
+}
+
+.x-modules-list .module:hover,
+.x-modules-list .module.x-active {
+	background-color: #dfe8f6;
+	border: 1px solid #abf;
+}
 
 
 

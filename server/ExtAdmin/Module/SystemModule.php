@@ -76,16 +76,19 @@ class SystemModule implements ModuleInterface
 
 			array(
 				'name'        => 'Editor Webu',
+				'iconCls'     => 'i-web-editor',
 				'entryModule' => '\\DemoCMS\\Administration\\WebEditor\\PageList',
 			),
 
 			array(
 				'name'        => 'Správa šablon',
+				'iconCls'     => 'i-template-manager',
 				'entryModule' => '\\WebBuilder\\Administration\\TemplateManager\\TemplateList',
 			),
 
 			array(
 				'name'        => 'Správa textů',
+				'iconCls'     => 'i-text-block-manager',
 				'entryModule' => '\\DemoCMS\\Administration\\TextBlockManager\\TextBlockList',
 			),
 		) );
