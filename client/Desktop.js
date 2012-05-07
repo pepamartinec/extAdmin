@@ -123,7 +123,7 @@ Ext.define( 'extAdmin.Desktop',
 	{
 		var me   = this,
 		    view = null;
-
+console.log('open', module);
 //		try {
 			// launch new module
 			module = me.env.moduleManager.get( module );
@@ -149,5 +149,7 @@ Ext.define( 'extAdmin.Desktop',
 			me.activeModule    = module;
 			me.activeComponent = view;
 		}
+
+		me.modulesPanel.select( me.modulesPanel.getStore().findRecord( 'entryModule', module.name ) );
 	}
 });
