@@ -19,9 +19,15 @@ Ext.define( 'extAdmin.Desktop',
 	],
 
 	/**
-	 * @config {extAdmin.Environment}
+	 * @required
+	 * @cfg {extAdmin.Environment}
 	 */
 	env : null,
+
+	/**
+	 * @cfg {Object[]} menuItems
+	 */
+	menuItems : null,
 
 	/**
 	 * @private
@@ -46,6 +52,18 @@ Ext.define( 'extAdmin.Desktop',
 
 		me.env = config.env;
 
+		var store = me.env.createStore({
+			loadAction : [ '\\ExtAdmin\\Module\\SystemModule', 'getMenuItems' ],
+			fields     : [ 'name', 'iconCls', 'entryModule' ]
+		});
+
+		if( config.menuItems ) {
+			store.loadData( config.menuItems );
+
+		} else {
+			store.load();
+		}
+
 		me.modulesPanel = Ext.create( 'Ext.view.View', {
 			region     : 'west',
 			width      : 125,
@@ -57,12 +75,7 @@ Ext.define( 'extAdmin.Desktop',
 				'<span class="x-icon {iconCls}"></span>{name}'
 			],
 
-			store : me.env.createStore({
-				loadAction : [ '\\ExtAdmin\\Module\\SystemModule', 'getMenuItems' ],
-
-				autoLoad : true,
-				fields   : [ 'name', 'iconCls', 'entryModule' ]
-			}),
+			store : store,
 
 			listeners    : {
 				itemclick : function( view, module ) {
