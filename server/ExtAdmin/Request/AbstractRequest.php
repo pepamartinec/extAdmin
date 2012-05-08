@@ -134,7 +134,7 @@ abstract class AbstractRequest implements RequestInterface
 	 */
 	public static function secureData( $dataSet, $dataKey, $type = 'string' )
 	{
-		if( array_key_exists( $dataSet[ $dataKey ] ) ) {
+		if( array_key_exists( $dataKey, $dataSet ) ) {
 			$value = $dataSet[ $dataKey ];
 
 		} else {
