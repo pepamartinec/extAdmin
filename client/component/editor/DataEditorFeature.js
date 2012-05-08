@@ -379,6 +379,6 @@ Ext.define( 'extAdmin.component.editor.DataEditorFeature',
 	 */
 	isPersisted : function()
 	{
-		return this.getRecordId() != null;
+		return !!this.getRecordId();
 	}
 });
