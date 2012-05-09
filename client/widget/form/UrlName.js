@@ -62,7 +62,7 @@ Ext.define( 'extAdmin.widget.form.UrlName',
 	 */
 	generate : function()
 	{
-		if( this.getReadOnly() ) {
+		if( this.readOnly ) {
 			return;
 		}
 
